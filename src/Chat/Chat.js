@@ -27,13 +27,26 @@ class Chat extends Component {
     }, 1000);
   }
 
+  onMessages = (newMessage) => {
+    let newMessages = this.state.messages.concat(newMessage);
+    const newRobatMessage = answersData.find((answer) => answer.tags.includes(newMessage.text));
+    if (newRobatMessage) {
+      newMessages = newMessages.concat(newRobatMessage);
+    }
+    setTimeout(() => {
+      this.setState({
+        messages: newMessages,
+      });
+    }, 100);
+  };
+
   render() {
     const { shop, messages } = this.state;
     return (
       <main className="Chat">
         <ChatHeader shop={shop} />
         <ChatBox messages={messages} />
-        <ChatInput />
+        <ChatInput onChanged={this.onMessages} />
       </main>
     );
   }

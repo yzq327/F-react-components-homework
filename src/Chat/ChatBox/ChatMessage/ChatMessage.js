@@ -18,6 +18,9 @@ class ChatMessage extends Component {
           {text}
         </div>
         {role === ROLE.CUSTOMER && <div className="customer-avatar" />}
+        {/* <div style={boxStyle} className="message-box">
+          {text}
+        </div> */}
       </div>
     );
   }
